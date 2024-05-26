@@ -1,0 +1,1232 @@
+{
+	"info": {
+		"_postman_id": "f5f94f05-89dc-4024-855a-fec7c94825be",
+		"name": "Trello",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33400817"
+	},
+	"item": [
+		{
+			"name": "create board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.actualMethod = pm.request.method;\r",
+							"    pm.expect(pm.actualMethod).to.eq(\"POST\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"})\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.environment.set(\"myBoardid\", jsonData.id)\r",
+							"\r",
+							"var boardname = pm.environment.get(\"Be different\");\r",
+							"\r",
+							"pm.test(\"Be different is correct\", function () {\r",
+							"    pm.expect(jsonData.name).to.eql(\"Be different\");\r",
+							"})\r",
+							"\r",
+							"var boardid = pm.environment.get(\"myBoardid\");\r",
+							"\r",
+							"pm.test(\"myBoardid is correct\", function () {\r",
+							"    pm.expect(jsonData.id).to.eql(boardid);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Th name of board is not equal null \", function () {\r",
+							"    pm.expect(jsonData.name).to.not.eql(null);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}boards/?key={{key}}&token={{token}}&name=Be different",
+					"host": [
+						"{{base_url}}boards"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "name",
+							"value": "Be different"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful GET request\", function () {\r",
+							"    pm.actualMethod = pm.request.method;\r",
+							"    pm.expect(pm.actualMethod).to.eq(\"GET\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 3000ms00ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"})\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.environment.set(\"myBoardid\", jsonData.id)\r",
+							"\r",
+							"var boardname = pm.environment.get(\"Be different\");\r",
+							"\r",
+							"pm.test(\"Be different is correct\", function () {\r",
+							"    pm.expect(jsonData.name).to.eql(\"Be different\");\r",
+							"})\r",
+							"\r",
+							"var boardid = pm.environment.get(\"myBoardid\");\r",
+							"\r",
+							"pm.test(\"myBoardid is correct\", function () {\r",
+							"    pm.expect(jsonData.id).to.eql(boardid);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Th name of board is not equal null \", function () {\r",
+							"    pm.expect(jsonData.name).to.not.eql(null);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}boards/{{myBoardid}}?key={{key}}&token={{token}}",
+					"host": [
+						"{{base_url}}boards"
+					],
+					"path": [
+						"{{myBoardid}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful PUT request\", function () {\r",
+							"    pm.actualMethod = pm.request.method;\r",
+							"    pm.expect(pm.actualMethod).to.eq(\"PUT\");\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 3000ms00ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"})\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.environment.set(\"myBoardid\", jsonData.id)\r",
+							"\r",
+							"var boardname = pm.environment.get(\"Be different\");\r",
+							"\r",
+							"pm.test(\"Be different is correct\", function () {\r",
+							"    pm.expect(jsonData.name).to.eql(\"Be different\");\r",
+							"})\r",
+							"\r",
+							"var boardid = pm.environment.get(\"myBoardid\");\r",
+							"\r",
+							"pm.test(\"myBoardid is correct\", function () {\r",
+							"    pm.expect(jsonData.id).to.eql(boardid);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Th name of board is not equal null \", function () {\r",
+							"    pm.expect(jsonData.name).to.not.eql(null);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}boards/{{myBoardid}}?key={{key}}&token={{token}}&name=Be different",
+					"host": [
+						"{{base_url}}boards"
+					],
+					"path": [
+						"{{myBoardid}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "name",
+							"value": "Be different"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.actualMethod = pm.request.method;\r",
+							"    pm.expect(pm.actualMethod).to.eq(\"POST\");\r",
+							"});\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.environment.set(\"myListid\",jsonData.id);\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"myBoardid is correct\", function () {\r",
+							"    pm.expect(jsonData.idBoard).to.eql(pm.environment.get(\"myBoardid\"));\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Th name of list is not equal null \", function () {\r",
+							"        pm.expect(jsonData.name).to.not.eql(null);\r",
+							"});\r",
+							"pm.test(\"Th id of list is not equal null \", function () {\r",
+							"        pm.expect(jsonData.name).to.not.eql(null);\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}lists/?name=myfirstList&key={{key}}&token={{token}}&idBoard={{myBoardid}}",
+					"host": [
+						"{{base_url}}lists"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "myfirstList"
+						},
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "idBoard",
+							"value": "{{myBoardid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful GET request\", function () {\r",
+							"    pm.actualMethod = pm.request.method;\r",
+							"    pm.expect(pm.actualMethod).to.eq(\"GET\");\r",
+							"});\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"})\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.environment.set(\"myListid\",jsonData.id);\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"myBoardid is correct\", function () {\r",
+							"    pm.expect(jsonData.idBoard).to.eql(pm.environment.get(\"myBoardid\"));\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Th name of list is not equal null \", function () {\r",
+							"        pm.expect(jsonData.name).to.not.eql(null);\r",
+							"});\r",
+							"pm.test(\"Th id of list is not equal null \", function () {\r",
+							"        pm.expect(jsonData.name).to.not.eql(null);\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}lists/{{myListid}}?key={{key}}&token={{token}}",
+					"host": [
+						"{{base_url}}lists"
+					],
+					"path": [
+						"{{myListid}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful PUT request\", function () {\r",
+							"    pm.actualMethod = pm.request.method;\r",
+							"    pm.expect(pm.actualMethod).to.eq(\"PUT\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"})\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.environment.set(\"myListid\",jsonData.id);\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"myBoardid is correct\", function () {\r",
+							"    pm.expect(jsonData.idBoard).to.eql(pm.environment.get(\"myBoardid\"));\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Th name of list is not equal null \", function () {\r",
+							"        pm.expect(jsonData.name).to.not.eql(null);\r",
+							"});\r",
+							"pm.test(\"Th id of list is not equal null \", function () {\r",
+							"        pm.expect(jsonData.name).to.not.eql(null);\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}lists/{{myListid}}?key={{key}}&token={{token}}&name=new List",
+					"host": [
+						"{{base_url}}lists"
+					],
+					"path": [
+						"{{myListid}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "name",
+							"value": "new List"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Successful POST request', function () {\r",
+							"    pm.actualMethod = pm.request.method;\r",
+							"    pm.expect(pm.actualMethod).to.eq('POST');\r",
+							"})\r",
+							"\r",
+							"pm.test('Status code is 200', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"})\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.environment.set('myCardid', jsonData.id)\r",
+							"\r",
+							"var boardid = pm.environment.get('myBoardid');\r",
+							"\r",
+							"pm.test(\"myBoardid is correct\", function () {\r",
+							"    pm.expect(jsonData.idBoard).to.eql(pm.environment.get(\"myBoardid\"));\r",
+							"});\r",
+							"\r",
+							"pm.test('Th name of card is not equal null ', function () {\r",
+							"    pm.expect(jsonData.name).to.not.eql(null);\r",
+							"})\r",
+							"\r",
+							"pm.test('Th id of card is not equal null ', function () {\r",
+							"    pm.expect(jsonData.name).to.not.eql(null);\r",
+							"})\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}cards?name=myfirstCard&key={{key}}&token={{token}}&idList={{myListid}}",
+					"host": [
+						"{{base_url}}cards"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "myfirstCard"
+						},
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "idList",
+							"value": "{{myListid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Successful GET request', function () {\r",
+							"    pm.actualMethod = pm.request.method;\r",
+							"    pm.expect(pm.actualMethod).to.eq('GET');\r",
+							"})\r",
+							"\r",
+							"pm.test('Status code is 200', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"})\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.environment.set('myCardid', jsonData.id)\r",
+							"\r",
+							"var boardid = pm.environment.get('myBoardid');\r",
+							"\r",
+							"pm.test(\"myBoardid is correct\", function () {\r",
+							"    pm.expect(jsonData.idBoard).to.eql(pm.environment.get(\"myBoardid\"));\r",
+							"});\r",
+							"\r",
+							"pm.test('Th name of card is not equal null ', function () {\r",
+							"    pm.expect(jsonData.name).to.not.eql(null);\r",
+							"})\r",
+							"\r",
+							"pm.test('Th id of card is not equal null ', function () {\r",
+							"    pm.expect(jsonData.name).to.not.eql(null);\r",
+							"})\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}cards/{{myCardid}}?key={{key}}&token={{token}}",
+					"host": [
+						"{{base_url}}cards"
+					],
+					"path": [
+						"{{myCardid}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get a field on card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Successful GET request', function () {\r",
+							"    pm.actualMethod = pm.request.method;\r",
+							"    pm.expect(pm.actualMethod).to.eq('GET');\r",
+							"})\r",
+							"\r",
+							"pm.test('Status code is 200', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"})\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.environment.set('myCardid', jsonData.id)\r",
+							"\r",
+							"var boardid = pm.environment.get('myBoardid');\r",
+							"\r",
+							"pm.test(\"myBoardid is correct\", function () {\r",
+							"    pm.expect(jsonData.idBoard).to.eql(pm.environment.get(\"myBoardid\"));\r",
+							"});\r",
+							"\r",
+							"pm.test('Th name of card is not equal null ', function () {\r",
+							"    pm.expect(jsonData.name).to.not.eql(null);\r",
+							"})\r",
+							"\r",
+							"pm.test('Th id of card is not equal null ', function () {\r",
+							"    pm.expect(jsonData.name).to.not.eql(null);\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}cards/{{myCardid}}?key={{key}}&token={{token}}",
+					"host": [
+						"{{base_url}}cards"
+					],
+					"path": [
+						"{{myCardid}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Successful PUT request', function () {\r",
+							"    pm.actualMethod = pm.request.method;\r",
+							"    pm.expect(pm.actualMethod).to.eq('PUT');\r",
+							"})\r",
+							"\r",
+							"pm.test('Status code is 200', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"})\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.environment.set('myCardid', jsonData.id)\r",
+							"\r",
+							"var boardid = pm.environment.get('myBoardid');\r",
+							"\r",
+							"pm.test(\"myBoardid is correct\", function () {\r",
+							"    pm.expect(jsonData.idBoard).to.eql(pm.environment.get(\"myBoardid\"));\r",
+							"});\r",
+							"\r",
+							"pm.test('Th name of card is not equal null ', function () {\r",
+							"    pm.expect(jsonData.name).to.not.eql(null);\r",
+							"})\r",
+							"\r",
+							"pm.test('Th id of card is not equal null ', function () {\r",
+							"    pm.expect(jsonData.name).to.not.eql(null);\r",
+							"})\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}cards/{{myCardid}}?key={{key}}&token={{token}}&name=new Card",
+					"host": [
+						"{{base_url}}cards"
+					],
+					"path": [
+						"{{myCardid}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "name",
+							"value": "new Card"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create checklist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Successful POST request', function () {\r",
+							"    pm.actualMethod = pm.request.method;\r",
+							"    pm.expect(pm.actualMethod).to.eq('POST');\r",
+							"})\r",
+							"\r",
+							"pm.test('Status code is 200', function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"})\r",
+							"\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.environment.set('myChecklistid', jsonData.id)\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}checklists?idCard={{myCardid}}&key={{key}}&token={{token}}&name=my checklist",
+					"host": [
+						"{{base_url}}checklists"
+					],
+					"query": [
+						{
+							"key": "idCard",
+							"value": "{{myCardid}}"
+						},
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "name",
+							"value": "my checklist"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get checklist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful GET request\", function () {\r",
+							"    pm.actualMethod = pm.request.method;\r",
+							"    pm.expect(pm.actualMethod).to.eq(\"GET\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"})\r",
+							"\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.environment.set(\"myChecklistid\",jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}checklists/{{myChecklistid}}?key={{key}}&token={{token}}",
+					"host": [
+						"{{base_url}}checklists"
+					],
+					"path": [
+						"{{myChecklistid}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update checklist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful PUT request\", function () {\r",
+							"    pm.actualMethod = pm.request.method;\r",
+							"    pm.expect(pm.actualMethod).to.eq(\"PUT\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"})\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.environment.set(\"myChecklistid\",jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}checklists/{{myChecklistid}}?key={{key}}&token={{token}}&name={{new checklist}}",
+					"host": [
+						"{{base_url}}checklists"
+					],
+					"path": [
+						"{{myChecklistid}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "name",
+							"value": "{{new checklist}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create checkitem",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.actualMethod = pm.request.method;\r",
+							"    pm.expect(pm.actualMethod).to.eq(\"POST\");\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"})\r",
+							"\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.environment.set(\"myCheckitemid\",jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}checklists/{{myChecklistid}}/checkItems?name=my checkitem&key={{key}}&token={{token}}&idChecklist={{myChecklistid}}",
+					"host": [
+						"{{base_url}}checklists"
+					],
+					"path": [
+						"{{myChecklistid}}",
+						"checkItems"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "my checkitem"
+						},
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "idChecklist",
+							"value": "{{myChecklistid}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get checkitem",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful GET request\", function () {",
+							"    pm.actualMethod = pm.request.method;",
+							"    pm.expect(pm.actualMethod).to.eq(\"GET\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 3000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+							"})",
+							"",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.environment.set(\"myCheckitemid\", jsonData.id);",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}checklists/{{myChecklistid}}/checkItems/{{myCheckitemid}}?key={{key}}&token={{token}}",
+					"host": [
+						"{{base_url}}checklists"
+					],
+					"path": [
+						"{{myChecklistid}}",
+						"checkItems",
+						"{{myCheckitemid}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete checkitem",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {\r",
+							"    pm.actualMethod = pm.request.method;\r",
+							"    pm.expect(pm.actualMethod).to.eq(\"DELETE\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}checklists/{{myChecklistid}}/checkItems/{{myCheckitemid}}?key={{key}}&token={{token}}",
+					"host": [
+						"{{base_url}}checklists"
+					],
+					"path": [
+						"{{myChecklistid}}",
+						"checkItems",
+						"{{myCheckitemid}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete checklist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {\r",
+							"    pm.actualMethod = pm.request.method;\r",
+							"    pm.expect(pm.actualMethod).to.eq(\"DELETE\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}checklists/{{myChecklistid}}?key={{key}}&token={{token}}",
+					"host": [
+						"{{base_url}}checklists"
+					],
+					"path": [
+						"{{myChecklistid}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete card",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {\r",
+							"    pm.actualMethod = pm.request.method;\r",
+							"    pm.expect(pm.actualMethod).to.eq(\"DELETE\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}cards/{{myCardid}}?key={{key}}&token={{token}}&name={{myfirstCard}}",
+					"host": [
+						"{{base_url}}cards"
+					],
+					"path": [
+						"{{myCardid}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "name",
+							"value": "{{myfirstCard}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful DELETE request\", function () {\r",
+							"    pm.actualMethod = pm.request.method;\r",
+							"    pm.expect(pm.actualMethod).to.eq(\"DELETE\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Response time is less than 3000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response has _value property\", function () {\r",
+							"    pm.expect(pm.response.json()).to.have.property('_value');\r",
+							"});\r",
+							"pm.test(\"_value property is null\", function () {\r",
+							"    pm.expect(pm.response.json()._value).to.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}boards/{{myBoardid}}?key={{key}}&token={{token}}&name={{Be different}}",
+					"host": [
+						"{{base_url}}boards"
+					],
+					"path": [
+						"{{myBoardid}}"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{token}}"
+						},
+						{
+							"key": "name",
+							"value": "{{Be different}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
