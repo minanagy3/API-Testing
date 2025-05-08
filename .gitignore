@@ -1,0 +1,12 @@
+node_modules/
+reports/
+*.log
+.env
+.DS_Store
+*.html
+*.json
+!package.json
+!package-lock.json
+!collections/*.json
+!environments/*.json
+

@@ -1,0 +1,27 @@
+{
+  "name": "api-testing-postman",
+  "version": "1.0.0",
+  "description": "API Testing Framework using Postman, Newman, and Jenkins CI/CD",
+  "main": "index.js",
+  "scripts": {
+    "test": "newman run collections/Trello.postman_collection.json -e environments/Trello.postman_environment.json",
+    "test:html": "newman run collections/Trello.postman_collection.json -e environments/Trello.postman_environment.json -r html --reporter-html-export reports/newman-report.html",
+    "test:cli": "newman run collections/Trello.postman_collection.json -e environments/Trello.postman_environment.json -r cli",
+    "test:json": "newman run collections/Trello.postman_collection.json -e environments/Trello.postman_environment.json -r json --reporter-json-export reports/newman-report.json",
+    "test:all": "npm run test:html && npm run test:json"
+  },
+  "keywords": [
+    "postman",
+    "newman",
+    "api-testing",
+    "automation",
+    "jenkins",
+    "ci-cd"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "newman": "^6.0.0"
+  }
+}
+
