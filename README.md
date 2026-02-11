@@ -124,4 +124,4 @@ ISC
 
 ## 👤 Author
 
-Junior QA Engineer
+Mina Nagy QA Engineer
